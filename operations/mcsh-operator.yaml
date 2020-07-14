@@ -14,7 +14,6 @@ spec:
         name: mcsh-operator
     spec:
       serviceAccountName: mcsh-operator
-      terminationMessagePolicy: FallbackToLogsOnError
       containers:
       - name: mcsh-operator
         image: docker.io/quantomworks/mc-operator:latest

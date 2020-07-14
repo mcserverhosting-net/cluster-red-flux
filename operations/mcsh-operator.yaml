@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcsh-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mcsh-operator
+  template:
+    metadata:
+      labels:
+        name: mcsh-operator
+    spec:
+      serviceAccountName: mcsh-operator
+      terminationMessagePolicy: FallbackToLogsOnError
+      containers:
+      - name: mcsh-operator
+        image: docker.io/quantomworks/mc-operator:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        env:
+          - name: WATCH_NAMESPACE
+            value: ""
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: OPERATOR_NAME
+            value: "mcsh-operator"

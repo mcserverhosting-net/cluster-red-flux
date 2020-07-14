@@ -19,7 +19,7 @@ spec:
       serviceAccountName: mcsh-operator
       containers:
       - name: mcsh-operator
-        image: docker.io/quantomworks/mc-operator:v3.3
+        image: docker.io/quantomworks/mc-operator:v3.4
         imagePullPolicy: Always
         resources:
           requests:

@@ -34,7 +34,7 @@ metadata:
   annotations:
     metallb.universe.tf/address-pool: default
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - targetPort: proxy
     name: proxy

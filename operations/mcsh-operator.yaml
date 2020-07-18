@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,7 +19,7 @@ spec:
       serviceAccountName: mcsh-operator
       containers:
       - name: mcsh-operator
-        image: docker.io/quantomworks/mc-operator:latest
+        image: docker.io/quantomworks/mc-operator:v3.4
         imagePullPolicy: Always
         resources:
           requests:
@@ -28,11 +29,11 @@ spec:
             cpu: 100m
             memory: 100Mi
         env:
-          - name: WATCH_NAMESPACE
-            value: ""
-          - name: POD_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.name
-          - name: OPERATOR_NAME
-            value: "mcsh-operator"
+        - name: WATCH_NAMESPACE
+          value: ""
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: OPERATOR_NAME
+          value: "mcsh-operator"

@@ -1,4 +1,4 @@
-kind: RoleBinding
+kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sftp-op
@@ -7,6 +7,6 @@ subjects:
 - kind: ServiceAccount
   name: sftp-op
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: sftp-op
   apiGroup: rbac.authorization.k8s.io

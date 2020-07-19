@@ -5,6 +5,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: server-op
+  namespace: mcsh
 roleRef:
   kind: ClusterRole
   name: server-op

@@ -5,6 +5,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: nslock-op
+  namespace: mcsh
 roleRef:
   kind: ClusterRole
   name: nslock-op

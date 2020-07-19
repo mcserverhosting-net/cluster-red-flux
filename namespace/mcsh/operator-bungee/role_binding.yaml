@@ -5,6 +5,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: bungee-op
+  namespace: mcsh
 roleRef:
   kind: ClusterRole
   name: bungee-op

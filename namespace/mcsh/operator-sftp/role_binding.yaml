@@ -5,6 +5,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: sftp-op
+  namespace: mcsh  
 roleRef:
   kind: ClusterRole
   name: sftp-op

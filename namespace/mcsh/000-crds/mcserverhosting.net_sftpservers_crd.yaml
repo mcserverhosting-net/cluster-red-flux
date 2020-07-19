@@ -1,0 +1,27 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: sftpservers.mcserverhosting.net
+spec:
+  group: mcserverhosting.net
+  names:
+    kind: SFTPServer
+    shortNames:
+    - sftp
+    - sftps
+    - ssh
+    - sshs
+    listKind: SFTPServerList
+    plural: sftpservers
+    singular: sftpserver
+  scope: Namespaced
+  versions:
+  - name: v2
+    schema:
+      openAPIV3Schema:
+        type: object
+        x-kubernetes-preserve-unknown-fields: true
+    served: true
+    storage: true
+    subresources:
+      status: {}

@@ -1,0 +1,1 @@
+{"jobID":"d46c3a65-6974-f62a-9dc8-e934d59964f7","spec":{"type":"policy","cause":{"Message":"","User":"Samuel Walker \u003csfxworks@gmail.com\u003e"},"spec":{"mcsh:deployment/sftp-op":{"add":{"automated":"true"},"remove":{}}}},"result":null}

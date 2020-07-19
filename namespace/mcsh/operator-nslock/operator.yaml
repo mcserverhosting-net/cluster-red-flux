@@ -1,8 +1,11 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nslock-op
   namespace: mcsh
+  annotations:
+    fluxcd.io/automated: 'true'
 spec:
   replicas: 1
   selector:

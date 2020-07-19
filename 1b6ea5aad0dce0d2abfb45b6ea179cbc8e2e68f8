@@ -1,0 +1,1 @@
+{"jobID":"f35f8b6d-8c5c-1a01-e163-eb56436d85af","spec":{"type":"policy","cause":{"Message":"","User":"Samuel Walker \u003csfxworks@gmail.com\u003e"},"spec":{"mcsh:deployment/nslock-op":{"add":{"automated":"true"},"remove":{}}}},"result":null}

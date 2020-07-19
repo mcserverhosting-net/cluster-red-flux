@@ -23,7 +23,7 @@ spec:
           limits:
             memory: 100Mi
             cpu: 100m
-        image: docker.io/quantomworks/sftp-operator
+        image: docker.io/quantomworks/sftp-operator:v1.1
         imagePullPolicy: Always
         env:
         - name: WATCH_NAMESPACE

@@ -1,0 +1,43 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mcshadmin
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  - pods/log
+  - events
+  verbs:
+  - get
+  - watch
+  - list
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - pods/attach
+  verbs:
+  - create
+- apiGroups:
+  - ""
+  resources:
+  - pod/logs
+  verbs:
+  - watch
+  - get
+- apiGroups:
+  - mcserverhosting.net
+  resources:
+  - bungeedeployments
+  - minecraftservers
+  - sftpservers
+  verbs:
+  - '*'

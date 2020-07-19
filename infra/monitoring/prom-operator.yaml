@@ -11,3 +11,7 @@ spec:
     git: git@github.com:helm/charts
     path: stable/prometheus-operator
     ref: master
+  values:
+    prometheus.podDisruptionBudget.enabled: true
+    grafana.persistence.storageClassName: rook-ceph-block
+    grafana.persistence.enabled: true

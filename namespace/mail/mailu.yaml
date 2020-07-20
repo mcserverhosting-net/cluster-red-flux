@@ -20,7 +20,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: mailu
-  namespace: kube-system
+  namespace: mail
   annotations:
     fluxcd.io/automated: "true"
 spec:

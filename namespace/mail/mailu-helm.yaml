@@ -1,0 +1,17 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: mailu
+  namespace: mail
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  chart:
+    git: git@github.com:Mailu/helm-charts
+    path: mailu
+    ref: master
+  valuesFrom:
+  - secretKeyRef:
+      name: mailu
+      namespace: mail
+      key: mailu-default.yaml

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: mailu
+  name: mail
 ---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret

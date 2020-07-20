@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kubeseal
+  namespace: kube-system
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: kubeseal
+  chart:
+    git: git@github.com:helm/charts
+    path: stable/sealed-secrets
+    ref: master

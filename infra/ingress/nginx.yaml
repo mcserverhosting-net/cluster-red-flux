@@ -16,3 +16,34 @@ spec:
     git: git@github.com:helm/charts
     path: stable/nginx-ingress
     ref: master
+  values:
+    controller:
+      service:
+        ports:
+          http: 80
+          https: 443
+          pop3: 110
+          pop3s: 995
+          imap: 143
+          imaps: 993
+          smtp: 25
+          smtps: 465
+          smtpd: 587
+        targetPorts:
+          http: http
+          https: https
+          pop3: pop3
+          pop3s: pop3s
+          imap: imap
+          imaps: imaps
+          smtp: smtp
+          smtps: smtps
+          smtpd: smtpd
+    tcp:
+      110: "mailu/mail-mailu-front:110"
+      995: "mailu/mail-mailu-front:995"
+      143: "mailu/mail-mailu-front:143"
+      993: "mailu/mail-mailu-front:993"
+      25: "mailu/mail-mailu-front:25"
+      465: "mailu/mail-mailu-front:465"
+      587: "mailu/mail-mailu-front:587"

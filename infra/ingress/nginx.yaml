@@ -40,10 +40,10 @@ spec:
           smtps: smtps
           smtpd: smtpd
     tcp:
-      110: "mailu/mail-mailu-front:110"
-      995: "mailu/mail-mailu-front:995"
-      143: "mailu/mail-mailu-front:143"
-      993: "mailu/mail-mailu-front:993"
-      25: "mailu/mail-mailu-front:25"
-      465: "mailu/mail-mailu-front:465"
-      587: "mailu/mail-mailu-front:587"
+      110: "mail/mail-mailu-front:110"
+      995: "mail/mail-mailu-front:995"
+      143: "mail/mail-mailu-front:143"
+      993: "mail/mail-mailu-front:993"
+      25: "mail/mail-mailu-front:25"
+      465: "mail/mail-mailu-front:465"
+      587: "mail/mail-mailu-front:587"

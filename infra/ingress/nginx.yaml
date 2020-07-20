@@ -11,7 +11,7 @@ metadata:
   annotations:
     fluxcd.io/automated: "true"
 spec:
-  releaseName: prom-operator
+  releaseName: nginx
   chart:
     git: git@github.com:helm/charts
     path: stable/nginx-ingress

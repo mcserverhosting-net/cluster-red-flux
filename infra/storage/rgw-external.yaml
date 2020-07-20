@@ -12,7 +12,7 @@ spec:
   - name: rgw
     port: 80
     protocol: TCP
-    targetPort: 80
+    targetPort: 8080
   selector:
     app: rook-ceph-rgw
     rook_cluster: rook-ceph

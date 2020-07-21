@@ -5,6 +5,7 @@ metadata:
   namespace: mail
   annotations:
     fluxcd.io/automated: "true"
+    custom-branch: "true"
 spec:
   chart:
     git: git@github.com:sfxworks/mailu-helm
@@ -21,4 +22,5 @@ kind: Namespace
 metadata:
   annotations:
     linkerd.io/inject: enabled
+    custom-branch: "true"
   name: mail

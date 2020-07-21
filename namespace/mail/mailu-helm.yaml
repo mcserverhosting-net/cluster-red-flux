@@ -7,9 +7,9 @@ metadata:
     fluxcd.io/automated: "true"
 spec:
   chart:
-    git: git@github.com:Mailu/helm-charts
+    git: git@github.com:sfxworks/mailu-helm
     path: mailu
-    ref: master
+    ref: sfxworks-patch1
   valuesFrom:
   - secretKeyRef:
       name: mailu

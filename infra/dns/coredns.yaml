@@ -1,0 +1,44 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: coredns
+  namespace: dns
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: coredns
+  chart:
+    git: git@github.com:helm/charts
+    path: stable/coredns
+    ref: master
+  values:
+    serviceType: LoadBalancer
+    isClusterService: "false"
+    replicaCount: 2
+    service:
+      loadBalancerIP: 51.222.70.235 
+      externalTrafficPolicy: local
+    servers:
+    - zones:
+      - zone: mcserverhosting.red
+      - zone: mcserverhosting.blue
+      - zone: mcserverhosting.net
+        port: 53
+        plugins:
+        - name: log
+        - name: errors
+        - name: health
+          configBlock: |-
+            lameduck 5s
+        - name: ready
+        - name: cache
+          parameters: 120
+        - name: loop
+        - name: reload
+        - name: loadbalance
+        - name: etcd
+          parameters: mcserverhosting.red
+          configBlock: |-
+            stubzones
+            path /skydns
+            endpoint http://etcd-coredns-client:2379

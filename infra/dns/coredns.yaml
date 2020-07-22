@@ -28,10 +28,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: coredns-coredns-udp
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "dns"
   labels:
     app.kubernetes.io/name: coredns
 spec:
-  loadBalancerIP: "51.222.70.236"
+  loadBalancerIP: "51.222.70.240"
   externalTrafficPolicy: Local
   selector:
     app.kubernetes.io/name: coredns
@@ -44,11 +46,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "dns"
   name: coredns-coredns-tcp
   labels:
     app.kubernetes.io/name: coredns
 spec:
-  loadBalancerIP: "51.222.70.236"
+  loadBalancerIP: "51.222.70.240"
   externalTrafficPolicy: Local
   selector:
     app.kubernetes.io/name: coredns

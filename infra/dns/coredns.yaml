@@ -16,7 +16,7 @@ spec:
     isClusterService: "false"
     replicaCount: 2
     service:
-      loadBalancerIP: 51.222.70.235 
+      loadBalancerIP: "51.222.70.235" 
       externalTrafficPolicy: local
     servers:
     - zones:
@@ -37,7 +37,7 @@ spec:
         - name: reload
         - name: loadbalance
         - name: etcd
-          parameters: mcserverhosting.red
+          parameters: mcserverhosting.red mcserverhosting.blue mcserverhosting.net
           configBlock: |-
             stubzones
             path /skydns

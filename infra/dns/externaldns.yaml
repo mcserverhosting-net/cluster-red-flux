@@ -63,7 +63,7 @@ spec:
             memory: 100Mi
         image: registry.opensource.zalan.do/teapot/external-dns:latest
         args:
-        - --source=ingress
+        - --source=ingress crd
         - --provider=coredns
         - --log-level=debug # debug only
         - --crd-source-kind="DNSEndpoint"

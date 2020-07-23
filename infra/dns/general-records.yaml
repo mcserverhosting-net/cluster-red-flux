@@ -19,3 +19,13 @@ spec:
     recordType: A
     targets:
     - 51.79.102.159
+  - dnsName: ns1.mcserverhosting.red
+    recordTTL: 180
+    recordType: A
+    targets:
+    - 51.222.70.240
+  - dnsName: ns2.mcserverhosting.red
+    recordTTL: 180
+    recordType: A
+    targets:
+    - 51.222.70.240

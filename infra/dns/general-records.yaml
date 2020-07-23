@@ -1,0 +1,21 @@
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: general-endpoints
+spec:
+  endpoints:
+  - dnsName: cluster.mcserverhosting.red
+    recordTTL: 180
+    recordType: A
+    targets:
+    - 51.79.102.159
+  - dnsName: play.mcserverhosting.red
+    recordTTL: 180
+    recordType: A
+    targets:
+    - 51.222.70.233
+  - dnsName: ssh.mcserverhosting.red
+    recordTTL: 180
+    recordType: A
+    targets:
+    - 51.79.102.159

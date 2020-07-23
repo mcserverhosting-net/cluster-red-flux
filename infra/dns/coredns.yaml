@@ -17,6 +17,9 @@ data:
         cache 30
         loop
         reload
+        dnssec mcserverhosting.red {
+            key file /etc/coredns/keys/Kmcserverhosting-red-private
+        }
         etcd {
             stubzones
             path /skydns
@@ -92,6 +95,8 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /etc/coredns
+        - name: dnskeys
+          mountPath: /etc/coredns/keys
         resources:
           limits:
             cpu: 100m
@@ -131,3 +136,7 @@ spec:
             items:
             - key: Corefile
               path: Corefile
+        - name: dnskeys
+          secret:
+            secretName: mcserverhosting-red
+            defaultMode: 0400

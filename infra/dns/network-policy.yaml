@@ -1,0 +1,56 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: dns
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: intra-namespace
+  namespace: dns
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            name: dns
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: access-kubeapi
+spec:
+  podSelector:
+    matchLabels:
+      component: kube-apiserver
+      tier: control-plane
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          component: kube-apiserver
+          tier: control-plane
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-dns-query
+  namespace: dns
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: coredns
+  ingress:
+  - from: []
+    ports:
+      - protocol: TCP
+        port: 53
+      - protocol: UDP
+        port: 53

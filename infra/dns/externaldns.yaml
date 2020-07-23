@@ -71,8 +71,6 @@ spec:
         - --source=crd
         - --provider=coredns
         - --log-level=debug # debug only
-        - --crd-source-kind="DNSEndpoint"
-        - --crd-source-apiversion="externaldns.k8s.io/v1alpha1"
         env:
         - name: ETCD_URLS
           value: http://etcd-coredns-client:2379

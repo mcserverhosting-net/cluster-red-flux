@@ -18,7 +18,7 @@ data:
         loop
         reload
         dnssec mcserverhosting.red {
-            key file /etc/coredns/keys/Kmcserverhosting-red-private
+            key file /etc/coredns/keys/Kmcserverhosting-red
         }
         etcd {
             stubzones
@@ -138,5 +138,5 @@ spec:
               path: Corefile
         - name: dnskeys
           secret:
-            secretName: mcserverhosting-red
+            secretName: mcserverhosting.red
             defaultMode: 0400

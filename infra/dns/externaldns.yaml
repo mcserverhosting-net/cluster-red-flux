@@ -70,7 +70,8 @@ spec:
         - --source=ingress
         - --source=crd
         - --provider=coredns
-        - --log-level=debug # debug only
+        - --log-level=debug
+        - --annotation-filter=cert-manager!=http01
         env:
         - name: ETCD_URLS
           value: http://etcd-coredns-client:2379

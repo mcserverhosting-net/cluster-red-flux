@@ -28,3 +28,7 @@ spec:
     - http01:
         ingress:
           class: nginx
+          ingressTemplate:
+            metadata:
+              annotations:
+                "cert-manager": "http01"

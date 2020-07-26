@@ -24,18 +24,8 @@ data:
         etcd {
             path /skydns
             endpoint http://etcd-coredns-client:2379
-            fallthrough
         }
-        forward . 10.106.5.146:53
-        {
-          force_tcp
-        }
-    }
-  zone-acme: |- 
-    ;; SOA Record
-    mcserverhosting.red.	3600	IN	SOA	mcserverhosting.red. root.mcserverhosting.red. 2034742235 7200 3600 86400 3600
-    ;; CNAME Records
-    _acme-challenge.mcserverhosting.red.	1	IN	CNAME	d2c70604-17cc-4122-b12e-786b2740d398.mcserverhosting.red.
+      }
 ---
 apiVersion: v1
 kind: Service
@@ -110,8 +100,6 @@ spec:
           mountPath: /etc/coredns
         - name: dnskeys
           mountPath: /etc/coredns/keys
-        - name: zone-acme
-          mountPath: /etc/coredns/zone
         resources:
           limits:
             cpu: 100m
@@ -151,12 +139,6 @@ spec:
             items:
             - key: Corefile
               path: Corefile
-        - name: zone-acme
-          configMap:
-            name: coredns-coredns
-            items:
-            - key: zone-acme
-              path: zone-acme
         - name: dnskeys
           secret:
             secretName: mcserverhosting.red

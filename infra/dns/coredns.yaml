@@ -153,7 +153,7 @@ spec:
               path: Corefile
         - name: zone-acme
           configMap:
-            name: zone-acme
+            name: coredns-coredns
             items:
             - key: zone-acme
               path: zone-acme

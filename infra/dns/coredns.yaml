@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: coredns
 data:
   Corefile: |-
-    . {
+    mcserverhosting.red {
         log
         errors
         health {
@@ -26,6 +26,12 @@ data:
             endpoint http://etcd-coredns-client:2379
         }
       }
+      . {
+        forward . /etc/resolv.conf
+        cache
+      }
+}
+
 ---
 apiVersion: v1
 kind: Service

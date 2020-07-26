@@ -21,9 +21,9 @@ data:
             key file /etc/coredns/keys/Kmcserverhosting-red
         }
         etcd {
-            stubzones
-            path /skydns
-            endpoint http://etcd-coredns-client:2379
+          fallthrough 
+          path /skydns
+          endpoint http://etcd-coredns-client:2379
         }
         forward . acme-dns:53
         {

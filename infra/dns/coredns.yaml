@@ -27,7 +27,7 @@ data:
             fallthrough
         }
         file /etc/coredns/zone/zone-acme _acme-challenge.mcserverhosting.red
-        forward . acme-dns:53
+        forward . 10.106.5.146:53
         {
           force_tcp
         }

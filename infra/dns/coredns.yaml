@@ -30,8 +30,7 @@ data:
         forward . /etc/resolv.conf
         cache
       }
-}
-
+    }
 ---
 apiVersion: v1
 kind: Service

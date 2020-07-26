@@ -24,11 +24,6 @@ data:
             stubzones
             path /skydns
             endpoint http://etcd-coredns-client:2379
-            fallthrough
-        }
-        forward . acme-dns:53
-        {
-          force_tcp
         }
     }
 ---

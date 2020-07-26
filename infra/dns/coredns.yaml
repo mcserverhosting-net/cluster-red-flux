@@ -22,7 +22,6 @@ data:
             key file /etc/coredns/keys/Kmcserverhosting-red
         }
         etcd {
-            stubzones
             path /skydns
             endpoint http://etcd-coredns-client:2379
             fallthrough
@@ -34,6 +33,8 @@ data:
         }
     }
   zone-acme: |- 
+    ;; SOA Record
+    mcserverhosting.red.	3600	IN	SOA	mcserverhosting.red. root.mcserverhosting.red. 2034742235 7200 3600 86400 3600
     ;; CNAME Records
     _acme-challenge.mcserverhosting.red.	1	IN	CNAME	d2c70604-17cc-4122-b12e-786b2740d398.mcserverhosting.red.
 ---

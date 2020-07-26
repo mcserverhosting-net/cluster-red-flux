@@ -18,6 +18,9 @@ data:
         cache 30
         loop
         reload
+        dnssec mcserverhosting.red {
+            key file /etc/coredns/keys/Kmcserverhosting-red
+        }
         etcd {
             path /skydns
             endpoint http://etcd-coredns-client:2379

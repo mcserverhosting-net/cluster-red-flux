@@ -26,7 +26,6 @@ data:
             endpoint http://etcd-coredns-client:2379
             fallthrough
         }
-        file /etc/coredns/zone/zone-acme _acme-challenge.mcserverhosting.red
         forward . 10.106.5.146:53
         {
           force_tcp

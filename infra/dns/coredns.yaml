@@ -25,6 +25,10 @@ data:
             path /skydns
             endpoint http://etcd-coredns-client:2379
         }
+        forward mcserverhosting.red acme-dns:53
+        {
+          force_tcp
+        }
     }
 ---
 apiVersion: v1

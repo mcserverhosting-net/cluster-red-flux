@@ -54,3 +54,24 @@ spec:
         port: 53
       - protocol: UDP
         port: 53
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-acme-from-cert-manager
+  namespace: dns
+spec:
+  podSelector:
+    matchLabels:
+      app: acme-dns
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          project: ingress
+    - podSelector:
+        matchLabels:
+          app: cert-manager
+    ports:
+    - protocol: TCP
+      port: 80

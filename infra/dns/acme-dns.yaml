@@ -1,0 +1,123 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: acme-dns
+  namespace: dns
+  labels:
+    app: acme-dns
+spec:
+  ports:
+  - port: 53
+    name: tcp-53
+  - port: 80
+    name: api
+  selector:
+    app: acme-dns
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: acme-dns
+  namespace: dns
+spec:
+  selector:
+    matchLabels:
+      app: acme-dns
+  replicas: 1
+  serviceName: acme-dns
+  template:
+    metadata:
+      labels:
+        app: acme-dns 
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: acme-dns
+        image: joohoi/acme-dns
+        ports:
+        - containerPort: 53
+          protocol: TCP
+          name: tcp-53
+        - containerPort: 80
+          protocol: TCP
+          name: api
+        volumeMounts:
+        - name: sqlite
+          mountPath: /var/lib/acme-dns 
+        - name: acmedns-config
+          mountPath: /etc/acme-dns
+      volumes:
+      - name: acmedns-config
+        configMap:
+          name: acmedns-config
+          items:
+          - key: config.cfg
+            path: config.cfg  
+  volumeClaimTemplates:
+  - metadata:
+      name: sqlite
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "rook-ceph-block"
+      resources:
+        requests:
+          storage: 1Gi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: acmedns-config
+  namespace: dns
+data:
+  config.cfg: |-
+    [general]
+    # DNS interface. Note that systemd-resolved may reserve port 53 on 127.0.0.53
+    # In this case acme-dns will error out and you will need to define the listening interface
+    # for example: listen = "127.0.0.1:53"
+    listen = "127.0.0.1:53"
+    # protocol, "both", "both4", "both6", "udp", "udp4", "udp6" or "tcp", "tcp4", "tcp6"
+    protocol = "tcp4"
+    # domain name to serve the requests off of
+    domain = "mcserverhosting.red"
+    # zone name server
+    nsname = "mcserverhosting.red"
+    # admin email address, where @ is substituted with .
+    nsadmin = "mcserverhosting.red"
+    # debug messages from CORS etc
+    debug = false
+
+    [database]
+    # Database engine to use, sqlite3 or postgres
+    engine = "sqlite3"
+    # Connection string, filename for sqlite3 and postgres://$username:$password@$host/$db_name for postgres
+    # Please note that the default Docker image uses path /var/lib/acme-dns/acme-dns.db for sqlite3
+    connection = "/var/lib/acme-dns/acme-dns.db"
+    # connection = "postgres://user:password@localhost/acmedns_db"
+
+    [api]
+    # listen ip eg. 127.0.0.1
+    ip = "0.0.0.0"
+    # disable registration endpoint
+    disable_registration = false
+    # listen port, eg. 80 for default HTTPS
+    port = "80"
+    # possible values: "letsencrypt", "letsencryptstaging", "cert", "none"
+    tls = "none"
+    # CORS AllowOrigins, wildcards can be used
+    corsorigins = [
+        "*"
+    ]
+    # use HTTP header to get the client ip
+    use_header = false
+    # header name to pull the ip address / list of ip addresses from
+    header_name = "X-Forwarded-For"
+
+    [logconfig]
+    # logging level: "error", "warning", "info" or "debug"
+    loglevel = "debug"
+    # possible values: stdout, TODO file & integrations
+    logtype = "stdout"
+    # file path for logfile TODO
+    # logfile = "./acme-dns.log"
+    # format, either "json" or "text"
+    logformat = "text"

@@ -32,3 +32,21 @@ spec:
             metadata:
               annotations:
                 "cert-manager": "http01"
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-dns
+spec:
+  acme:
+    email: services@sfxworks.net
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: issuer-account-key-dns
+    solvers:
+    - dns01:
+        acmedns:
+          host: http://acme-dns.dns
+          accountSecretRef:
+            name: acme-dns
+            key: acmedns.json

@@ -29,3 +29,8 @@ spec:
     recordType: A
     targets:
     - 51.222.70.240
+  - dnsName: _acme-challenge.mcserverhosting.red
+    recordTTL: 180
+    recordType: CNAME
+    targets:
+      - d2c70604-17cc-4122-b12e-786b2740d398.mcserverhosting.red

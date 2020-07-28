@@ -1,21 +1,25 @@
-apiVersion: v1
-kind: Service
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
 metadata:
-  name: rook-ceph-rgw-mcsh-store-external
+  name: s3-ingress
   namespace: rook-ceph
-  labels:
-    app: rook-ceph-rgw
-    rook_cluster: rook-ceph
-    rook_object_store: mcsh-store
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
 spec:
-  ports:
-  - name: rgw
-    port: 80
-    protocol: TCP
-    targetPort: 8080
-  selector:
-    app: rook-ceph-rgw
-    rook_cluster: rook-ceph
-    rook_object_store: mcsh-store
-  sessionAffinity: None
-  type: LoadBalancer
+  rules:
+  - host: s3.mcserverhosting.red
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: rook-ceph-rgw-mcsh-store
+          servicePort: 80
+  tls: 
+  - hosts:
+    - s3.mcserverhosting.red
+    secretName: s3-cert

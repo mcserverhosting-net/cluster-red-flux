@@ -29,16 +29,36 @@ roleRef:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mc-router
+  name: mc-router-tcp
   namespace: mcsh
   annotations:
-    metallb.universe.tf/address-pool: default
+    metallb.universe.tf/allow-shared-ip: "mcrouter"
 spec:
   type: LoadBalancer
+  loadBalancerIP: "51.222.70.233"
   ports:
-  - targetPort: proxy
+  - targetPort: proxy-tcp
     name: proxy
     port: 25565
+    protocol: TCP
+  selector:
+    run: mc-router
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mc-router-udp
+  namespace: mcsh
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "mcrouter"
+spec:
+  type: LoadBalancer
+  loadBalancerIP: "51.222.70.233"
+  ports:
+  - targetPort: proxy-udp
+    name: proxy
+    port: 25565
+    protocol: UDP
   selector:
     run: mc-router
 ---
@@ -67,10 +87,12 @@ spec:
         name: mc-router
         args: ["--api-binding", ":8080", "--in-kube-cluster"]
         ports:
-        - name: proxy
+        - name: proxy-tcp
           containerPort: 25565
-        - name: web
-          containerPort: 8080
+          protocol: TCP
+        - name: proxy-udp
+          containerPort: 25565
+          protocol: UDP
         resources:
           requests:
             memory: 250Mi

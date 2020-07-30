@@ -1,11 +1,7 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: server-op
-  namespace: mcsh
-  annotations:
-    fluxcd.io/automated: 'true'
 spec:
   replicas: 1
   selector:
@@ -26,11 +22,17 @@ spec:
           limits:
             memory: 100Mi
             cpu: 100m
-        image: harbor.mcserverhosting.red/mcsh/server-operator:v1.2
+        image: harbor.mcserverhosting.red/mcsh/server-operator:v1.3
         imagePullPolicy: Always
         env:
         - name: WATCH_NAMESPACE
           value: ""
+        - name: IP
+          value: "51.222.70.233"
+        - name: TLD
+          value: mcsh.red
+        - name: RUNTIME
+          value: runsc
         - name: POD_NAME
           valueFrom:
             fieldRef:

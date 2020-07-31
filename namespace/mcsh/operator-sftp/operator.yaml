@@ -26,7 +26,7 @@ spec:
           limits:
             memory: 100Mi
             cpu: 100m
-        image: harbor.mcserverhosting.red/mcsh/sftp-operator:v1.2.2-dev
+        image: harbor.mcserverhosting.red/mcsh/sftp-operator:v1.3
         imagePullPolicy: Always
         env:
         - name: WATCH_NAMESPACE

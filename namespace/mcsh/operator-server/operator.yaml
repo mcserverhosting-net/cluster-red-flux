@@ -36,7 +36,7 @@ spec:
         - name: TLD
           value: mcsh.red
         - name: RUNTIME
-          value: runsc
+          value: ""
         - name: POD_NAME
           valueFrom:
             fieldRef:

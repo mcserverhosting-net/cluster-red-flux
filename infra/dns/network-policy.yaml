@@ -22,6 +22,19 @@ spec:
           matchLabels:
             name: dns
 ---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: opeartor-namespace
+  namespace: dns
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            name: operator
+---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:

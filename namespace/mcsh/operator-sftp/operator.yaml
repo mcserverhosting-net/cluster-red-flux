@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -25,7 +26,7 @@ spec:
           limits:
             memory: 100Mi
             cpu: 100m
-        image: harbor.mcserverhosting.red/mcsh/sftp-operator:v1.2
+        image: harbor.mcserverhosting.red/mcsh/sftp-operator:v1.2.2-dev
         imagePullPolicy: Always
         env:
         - name: WATCH_NAMESPACE

@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: coredns
 data:
   Corefile: |-
-    mcserverhosting.red {
+    . {
         log
         errors
         health {
@@ -18,17 +18,13 @@ data:
         cache 30
         loop
         reload
-        dnssec mcserverhosting.red {
+        dnssec {
             key file /etc/coredns/keys/Kmcserverhosting-red
         }
         etcd {
             path /skydns
             endpoint http://etcd-coredns-client:2379
         }
-      }
-      . {
-        forward . /etc/resolv.conf
-        cache
       }
     }
 ---

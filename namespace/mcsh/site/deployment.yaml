@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcsh-deployment
+  namespace: mcsh
+  labels:
+    app: mcsh
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mcsh
+  template:
+    metadata:
+      labels:
+        app: mcsh
+    spec:
+      containers:
+      - name: mcsh
+        image: harbor.mcserverhosting.red/mcsh/site:v1.1
+        resources:
+          requests:
+            memory: 250Mi
+            cpu: 100m
+          limits:
+            memory: 1Gi
+            cpu: 500m
+        ports:
+        - containerPort: 80

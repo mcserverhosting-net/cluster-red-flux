@@ -20,9 +20,11 @@ spec:
     ref: master
   values:
     controller:
+      replicaCount: 3
       publishService:
         enabled: "true"
       service:
+        externalTrafficPolicy: Local
         ports:
           http: 80
           https: 443

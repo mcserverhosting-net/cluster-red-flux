@@ -21,11 +21,11 @@ spec:
       - name: server-op
         resources:
           requests:
-            memory: 50Mi
-            cpu: 50m
-          limits:
-            memory: 100Mi
+            memory: 500Mi
             cpu: 100m
+          limits:
+            memory: 500Mi
+            cpu: 250m
         image: harbor.mcserverhosting.red/mcsh/server-operator:v1.3.5
         imagePullPolicy: Always
         env:

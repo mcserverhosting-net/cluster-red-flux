@@ -1,0 +1,1 @@
+{"jobID":"2a3d6e88-cb2a-19de-7020-150c7b97320d","spec":{"type":"policy","cause":{"Message":"","User":"Samuel Walker \u003csfxworks@gmail.com\u003e"},"spec":{"mcsh:deployment/mcsh-deployment":{"add":{"automated":"true"},"remove":{}}}},"result":null}

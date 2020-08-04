@@ -6,13 +6,5 @@ metadata:
   annotations:
     etcd.database.coreos.com/scope: clusterwide
 spec:
-  size: 3
+  size: 1
   version: 3.2.13
-  pod:
-    persistentVolumeClaimSpec:
-      storageClassName: rook-ceph-block
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: 1Gi

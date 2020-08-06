@@ -26,7 +26,7 @@ spec:
           limits:
             memory: 500Mi
             cpu: 250m
-        image: harbor.mcserverhosting.red/mcsh/sftp-operator:v1.3
+        image: docker.io/quantomworks/sftp-operator:1.3
         imagePullPolicy: Always
         env:
         - name: WATCH_NAMESPACE

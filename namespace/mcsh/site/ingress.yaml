@@ -7,6 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/limit-connections: '4'
     nginx.ingress.kubernetes.io/limit-rpm: '240'
+    nginx.ingress.kubernetes.io/rewrite-target:  /
 spec:
   tls:
   - hosts:

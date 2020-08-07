@@ -19,11 +19,7 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: site
-          servicePort: 80
-      - path: /support
-        backend:
-          serviceName: support
+          serviceName: mcsh
           servicePort: 80
   - host: www.mcserverhosting.net
     http:
@@ -31,8 +27,4 @@ spec:
       - path: /
         backend:
           serviceName: mcsh
-          servicePort: 80
-      - path: /support
-        backend:
-          serviceName: support
           servicePort: 80

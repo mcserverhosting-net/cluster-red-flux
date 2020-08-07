@@ -7,7 +7,6 @@ metadata:
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/limit-connections: '4'
     nginx.ingress.kubernetes.io/limit-rpm: '240'
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   tls:
   - hosts:
@@ -22,6 +21,34 @@ spec:
         backend:
           serviceName: site
           servicePort: 80
+  - host: www.mcserverhosting.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: mcsh
+          servicePort: 80
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: mcsh-support
+  namespace: mcsh
+  annotations:
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/limit-connections: '4'
+    nginx.ingress.kubernetes.io/limit-rpm: '240'
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  tls:
+  - hosts:
+    - mcserverhosting.net
+    - www.mcserverhosting.net
+    secretName: mcserverhostingnet
+  rules:
+  - host: mcserverhosting.net
+    http:
+      paths:
       - path: /support(/|$)(.*)
         pathType: Prefix
         backend:
@@ -30,10 +57,6 @@ spec:
   - host: www.mcserverhosting.net
     http:
       paths:
-      - path: /
-        backend:
-          serviceName: mcsh
-          servicePort: 80
       - path: /support(/|$)(.*)
         pathType: Prefix
         backend:

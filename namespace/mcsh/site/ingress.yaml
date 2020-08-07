@@ -34,6 +34,7 @@ spec:
           serviceName: mcsh
           servicePort: 80
       - path: /support
+        pathType: Prefix
         backend:
           serviceName: support
           servicePort: 80

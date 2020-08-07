@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: support
-        image: harbor.mcserverhosting.red/mcsh/support:v1.2
+        image: harbor.mcserverhosting.red/mcsh/support:v1.4
         resources:
           requests:
             memory: 250Mi

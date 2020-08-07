@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: support
+  namespace: mcsh
+  labels:
+    app: support
+  annotations:
+    fluxcd.io/automated: 'true'
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: support
+  template:
+    metadata:
+      labels:
+        app: support
+    spec:
+      containers:
+      - name: support
+        image: harbor.mcserverhosting.red/mcsh/support:v1
+        resources:
+          requests:
+            memory: 250Mi
+            cpu: 100m
+          limits:
+            memory: 1Gi
+            cpu: 500m
+        ports:
+        - containerPort: 80

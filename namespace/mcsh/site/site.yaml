@@ -2,25 +2,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mcsh-deployment
+  name: site
   namespace: mcsh
   labels:
-    app: mcsh
+    app: site
   annotations:
     fluxcd.io/automated: 'true'
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: mcsh
+      app: site
   template:
     metadata:
       labels:
-        app: mcsh
+        app: site
     spec:
       containers:
-      - name: mcsh
-        image: harbor.mcserverhosting.red/mcsh/site:v1.1
+      - name: site
+        image: harbor.mcserverhosting.red/mcsh/site:v1.2
         resources:
           requests:
             memory: 250Mi

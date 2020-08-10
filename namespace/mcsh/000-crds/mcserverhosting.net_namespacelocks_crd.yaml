@@ -20,12 +20,3 @@ spec:
     storage: true
     subresources:
       status: {}
-  - name: v3
-    schema:
-      openAPIV3Schema:
-        type: object
-        x-kubernetes-preserve-unknown-fields: true
-    served: true
-    storage: false
-    subresources:
-      status: {}

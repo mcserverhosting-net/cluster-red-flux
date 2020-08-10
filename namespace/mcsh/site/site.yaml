@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: site
-        image: harbor.mcserverhosting.red/mcsh/site:v1.4.3
+        image: harbor.mcserverhosting.red/mcsh/site:v1.4.2
         resources:
           requests:
             memory: 250Mi

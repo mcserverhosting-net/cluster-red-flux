@@ -26,7 +26,7 @@ spec:
           limits:
             memory: 500Mi
             cpu: 250m
-        image: harbor.mcserverhosting.red/mcsh/server-operator:1.3.9
+        image: harbor.mcserverhosting.red/mcsh/server-operator:v1.4.1
         imagePullPolicy: Always
         env:
         - name: WATCH_NAMESPACE

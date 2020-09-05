@@ -694,6 +694,7 @@ rules:
   - pods
   - configmaps
   - services
+  - endpoints
   verbs:
   - get
   - list

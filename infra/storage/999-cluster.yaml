@@ -138,7 +138,7 @@ spec:
         memory: 3Gi
       requests:
         memory: 3Gi
-#removeOSDsIfOutAndSafeToRemove: false
+  removeOSDsIfOutAndSafeToRemove: true
 #  priorityClassNames:
 #    all: rook-ceph-default-priority-class
 #    mon: rook-ceph-mon-priority-class

@@ -22,7 +22,7 @@ spec:
         enabled: true
     grafana:
       persistence:
-        storageClassName: rook-ceph-block
+        storageClassName: longhorn
         enabled: true
       ingress:
         enabled: true

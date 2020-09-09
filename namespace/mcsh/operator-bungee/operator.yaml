@@ -26,7 +26,7 @@ spec:
           limits:
             memory: 100Mi
             cpu: 100m
-        image: harbor.mcserverhosting.red/mcsh/bungee-operator:v1.13.1
+        image: docker.io/quantomworks/mcsh-bungee-operator:v3
         imagePullPolicy: Always
         env:
         - name: WATCH_NAMESPACE

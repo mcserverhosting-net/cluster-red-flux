@@ -135,9 +135,9 @@ spec:
   resources:
     osd:
       limits:
-        memory: 3500Mi
+        memory: 4500Mi
       requests:
-        memory: 3500Mi
+        memory: 4500Mi
   removeOSDsIfOutAndSafeToRemove: true
 #  priorityClassNames:
 #    all: rook-ceph-default-priority-class

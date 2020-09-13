@@ -55,7 +55,6 @@ spec:
         - --run-firewall=true
         - --run-service-proxy=false
         - --bgp-graceful-restart=true
-        - --advertise-loadbalancer-ip=true
         env:
         - name: NODE_NAME
           valueFrom:

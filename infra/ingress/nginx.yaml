@@ -21,7 +21,7 @@ spec:
   values:
     controller:
       config:
-        worker-processes: 1
+        worker-processes: "1"
       replicaCount: 3
       publishService:
         enabled: "true"

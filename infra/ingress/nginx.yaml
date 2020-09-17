@@ -50,6 +50,5 @@ spec:
       995: "mail/mail-mailu-front:995"
       143: "mail/mail-mailu-front:143"
       993: "mail/mail-mailu-front:993"
-      25: "mail/mail-mailu-front:25"
       465: "mail/mail-mailu-front:465"
       587: "mail/mail-mailu-front:587"

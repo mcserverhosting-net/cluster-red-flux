@@ -26,7 +26,7 @@ spec:
           limits:
             memory: 500Mi
             cpu: 250m
-        image: docker.io/quantomworks/mcsh-server-operator:v3
+        image: docker.io/quantomworks/mcsh-server-operator:v3.1
         imagePullPolicy: Always
         env:
         - name: WATCH_NAMESPACE

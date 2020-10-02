@@ -20,6 +20,13 @@ spec:
     ref: master
   values:
     controller:
+      resources:
+        limits:
+          cpu: 100m
+          memory: 90Mi
+        requests:
+           cpu: 100m
+           memory: 100Mi
       config:
         worker-processes: "1"
       replicaCount: 3

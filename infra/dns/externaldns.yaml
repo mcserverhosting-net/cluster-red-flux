@@ -71,7 +71,7 @@ spec:
         - --source=crd
         - --source=service
         - --provider=coredns
-        - --log-level=debug
+        - --log-level=error
         env:
         - name: ETCD_URLS
           value: http://etcd-coredns-client:2379

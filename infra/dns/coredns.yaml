@@ -9,7 +9,6 @@ metadata:
 data:
   Corefile: |-
     mcsh.red {
-        log
         errors
         health {
             lameduck 5s
@@ -24,7 +23,6 @@ data:
         }
       }
     mcserverhosting.red {
-        log
         errors
         health {
             lameduck 5s

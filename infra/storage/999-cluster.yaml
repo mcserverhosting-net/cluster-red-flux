@@ -194,12 +194,12 @@ spec:
       devices:
       - name: "nvme1n1"
         config:
-          osdsPerDevice: 5
+          osdsPerDevice: "5"
     - name: "amd-2"
       devices:
       - name: "nvme1n1"
         config:
-          osdsPerDevice: 5
+          osdsPerDevice: "5"
 #      - name: "nvme01" # multiple osds can be created on high performance devices
 #        config:
 #          osdsPerDevice: "5"

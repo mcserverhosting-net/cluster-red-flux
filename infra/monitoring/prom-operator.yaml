@@ -6,12 +6,12 @@ metadata:
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: prom-operator
+  name: monitoring
   namespace: monitoring
   annotations:
     fluxcd.io/automated: "true"
 spec:
-  releaseName: prom-operator
+  releaseName: monitoring
   chart:
     git: git@github.com:helm/charts
     path: stable/prometheus-operator

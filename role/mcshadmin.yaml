@@ -10,6 +10,7 @@ rules:
   - services
   - pods/log
   - events
+  - resourcequota
   verbs:
   - get
   - watch
@@ -33,6 +34,14 @@ rules:
   verbs:
   - watch
   - get
+- apiGroups:
+  - deployments.mcserverhosting.net
+  resources:
+  - bungeeservers
+  - minecraftservers
+  - sftpservers
+  verbs:
+  - '*'
 - apiGroups:
   - mcserverhosting.net
   resources:

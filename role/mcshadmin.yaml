@@ -10,7 +10,7 @@ rules:
   - services
   - pods/log
   - events
-  - resourcequota
+  - resourcequotas
   verbs:
   - get
   - watch

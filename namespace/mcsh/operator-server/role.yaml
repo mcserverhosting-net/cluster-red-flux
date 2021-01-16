@@ -21,7 +21,7 @@ rules:
   resources:
   - events
   verbs:
-  - create
+  - '*'
 - apiGroups:
   - ""
   resources:
@@ -81,3 +81,4 @@ rules:
   - patch
   - update
   - watch
+  - patch

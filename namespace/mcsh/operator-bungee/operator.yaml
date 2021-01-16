@@ -21,11 +21,11 @@ spec:
       - name: bungee-op
         resources:
           requests:
-            memory: 50Mi
-            cpu: 50m
+            memory: 250Mi
+            cpu: 250m
           limits:
-            memory: 100Mi
-            cpu: 100m
+            memory: 500Mi
+            cpu: 500m
         image: docker.io/quantomworks/mcsh-bungee-operator:v3.2
         imagePullPolicy: Always
         env:

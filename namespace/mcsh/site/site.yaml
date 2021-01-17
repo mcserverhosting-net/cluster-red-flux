@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: site
-        image: docker.io/quantomworks/mcsh-site:v2
+        image: docker.io/quantomworks/mcsh-site:v2.1
         resources:
           requests:
             memory: 250Mi
